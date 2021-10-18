@@ -5,12 +5,12 @@ var bodyParser = require('body-parser');
 /*app.get("/",function(req,res){
 	res.send("Hello Express");
 });*/
-/*var rutaAbsoluta = __dirname+"//views/index.html"; 
+var rutaAbsoluta = __dirname+"//views/index.html"; 
 app.get("/",function(req,res){
 	res.sendFile(rutaAbsoluta);
 });
 var absoluteRoot = __dirname+"/public";
-app.use("/public",express.static(absoluteRoot));*/
+app.use("/public",express.static(absoluteRoot));
 /*app.get("/json",function(req,res){
 	if(process.env.MESSAGE_STYLE==="uppercase"){
 	res.json({"message":"hello json".toUpperCase()});
@@ -37,6 +37,10 @@ res.json({time : req.time});
   res.json({name: `${req.query.first} ${req.query.last}`})
 }); //name? first=firstname & last=lastname (nota:El Cliente pone esto en la url y ahí divista el objeto resultante)*/
 app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
+app.post("/name",function(req,res){
+  res.json({name: `${req.body.first} ${req.body.last}`})
+});// /name no existía. Hay que activar los get de htmlycss para revisar en vivo.En la librería POST estaría informacion comoxej: req.body:{first:"edit1.text",...}
 
 
 
