@@ -1,6 +1,7 @@
 console.log("Hello World");
 var express = require('express');
 var app = express();
+var bodyParser = require('body-parser');
 /*app.get("/",function(req,res){
 	res.send("Hello Express");
 });*/
@@ -32,9 +33,10 @@ res.json({time : req.time});
 /*app.get("/:word/echo",function(req,res){
   res.json({echo : req.params.word})
 });*/
-app.get("/name",function(req,res){
+/*app.get("/name",function(req,res){
   res.json({name: `${req.query.first} ${req.query.last}`})
-}); //name? first=firstname & last=lastname (nota:El Cliente pone esto en la url y ahí divista el objeto resultante)
+}); //name? first=firstname & last=lastname (nota:El Cliente pone esto en la url y ahí divista el objeto resultante)*/
+app.use(bodyParser.urlencoded({extended: false}));
 
 
 
